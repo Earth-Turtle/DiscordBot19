@@ -5,4 +5,8 @@ client.once('ready', () => {
 	console.log('Ready!');
 });
 
-client.login('your-token-goes-here');
+client.on('message', message => {
+	console.log(message.content);
+});
+
+client.login('NTkzMjUzMTcxMTc1MDk2MzMw.XRLMkw.MB8JTJ7SxUhynC7N-hArtcNBHH0');
