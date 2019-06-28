@@ -3,7 +3,7 @@ const fs = require('fs');
 //Gets discord's API
 const Discord = require("discord.js");
 //Gets the settings done in our config file
-const { prefix, token } = require("./config.json");
+const { prefix, token, taskList } = require("./config.json");
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
