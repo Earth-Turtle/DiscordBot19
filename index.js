@@ -3,7 +3,7 @@ const fs = require('fs');
 //Gets discord's API
 const Discord = require("discord.js");
 //Gets the settings done in our config file
-const { prefix, token, taskList } = require("./config.json");
+const { prefix, token } = require("./config.json");
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -39,7 +39,8 @@ client.on("message", message => {
 	try {
 		//If it is a viable command, execute it, passing through the message and the arguments
 		command.execute(message, args);
-	} catch (error) {
+	}
+	catch (error) {
 		console.error(error);
 		message.reply('there was an error trying to execute that command!');
 	}
