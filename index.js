@@ -16,9 +16,15 @@ for (const file of commandFiles) {
 
 client.once("ready", () => {
 	console.log("Ready!");
+	client.user.setActivity('Throwing events in the air');
+	
 });
 
 client.on("message", message => {
+
+	//Console debugging
+	console.log("input message: " + message.content + ", sent by " + message.member.displayName + ", in channel " + message.channel.name);
+	
 	//Every time someone sends a message, this runs
 	//If the message doesn't start with the bot's prefix, or if the message was sent by a bot, exit early
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
@@ -27,9 +33,7 @@ client.on("message", message => {
 	const args = message.content.slice(prefix.length).split(/ +/);
 	//Shift out the command, leaving the arguments in an array
 	const commandName = args.shift().toLowerCase();
-
-	//Console debugging
-	console.log("input message: " + message.content);
+	
 
 	//If the command isn't in the list of command files, return early
 	if (!client.commands.has(commandName)) return;
@@ -46,4 +50,4 @@ client.on("message", message => {
 	}
 });
 
-client.login(token);
+client.login(token).then(console.log).catch(console.error);
